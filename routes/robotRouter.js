@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const auth = require("../middleware/auth");
-const { PythonShell } = require('python-shell');
-const path = require('path');
+// const { PythonShell } = require('python-shell');
+// const path = require('path');
 const axios = require('axios');
 // const axiosRetry = require('axios-retry');
 require("dotenv").config();

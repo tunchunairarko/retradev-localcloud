@@ -133,8 +133,26 @@ io.on("connection", (socket) => {
   socket.on("SENDWAVEHAND",function(data){
     socket.broadcast.emit("RELAYWAVEHAND",data)
   })
+  socket.on("POINTAT",function(data){
+    socket.broadcast.emit("RELAYPOINTAT",data)
+  })
+  socket.on("MOTION", function (data) {
+    console.log(data)
+    socket.broadcast.emit("RELAYMOTION", data)
+  })
+  ///////////////////////////////////////////////////////////
+  ////////////////IP CAMERA RELAY AND RESET/////////////////
+  socket.on("STARTIPCAM",function(data){
+    socket.broadcast.emit("RELAYSTARTIPCAM",data)
+  })
+  socket.on("RESETIPCAM",function(data){
+    socket.broadcast.emit("RELAYRESETIPCAM",data)
+  })
+  socket.on("RELAYIPCAMURL",function(data){
+    socket.broadcast.emit("IPCAMURL",data)
+  })
 
 });
 
 console.log("RetraDev server log established")
-console.log("ACTIVE MICROSERVICES: --teleconference  || INACTIVE MICROSERVICES: --teleoperation")
+console.log("ACTIVE MICROSERVICES: --teleconference --teleoperation")
