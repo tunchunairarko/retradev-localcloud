@@ -1,5 +1,5 @@
-import { teleoperationService } from "./teleoperation/service";
+import { teleoperationService } from "./teleoperation/motion/service";
 
-export const startSocketServer = (socket) =>{
-    teleoperationService(socket)
+export const startSocketServer = (socket,robot) =>{
+    teleoperationService(socket,robot)
 }

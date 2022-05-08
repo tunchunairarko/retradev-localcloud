@@ -86,17 +86,12 @@ io.on("connection", (socket) => {
     console.log(data)
     socket.broadcast.emit("FROMNODESPEECHAPI", data)
   })
-
   socket.on("remoterobotdata", function (data) {
     console.log(data)
 
     socket.broadcast.emit("FROMREMOTEROBOT", data)
 
   })
-  // socket.on("ANIMUSFPS", function (data) {
-  //   // console.log(data)
-  //   // socket.broadcast.emit("FPSDATA", data)
-  // })
   socket.on("BATTERYDATA", function (data) {
     console.log(data)
     socket.broadcast.emit("TOBATTERYDATA", data)
@@ -117,10 +112,6 @@ io.on("connection", (socket) => {
     // console.log(data)
     socket.broadcast.emit("TOSONARDATA", data)
   })
-  socket.on("sendHeadMovement", function (data) {
-    // console.log(data)
-    socket.broadcast.emit("recHeadMovement", data)
-  })
 
   socket.on("SENDFACETRACKSTATUS", function (data) {
     console.log(data)
@@ -130,15 +121,9 @@ io.on("connection", (socket) => {
   socket.on("PEPPERCONTEST", function (data) {
     console.log(data)
   })
-  socket.on("SENDWAVEHAND",function(data){
-    socket.broadcast.emit("RELAYWAVEHAND",data)
-  })
+  
   socket.on("POINTAT",function(data){
     socket.broadcast.emit("RELAYPOINTAT",data)
-  })
-  socket.on("MOTION", function (data) {
-    console.log(data)
-    socket.broadcast.emit("RELAYMOTION", data)
   })
   ///////////////////////////////////////////////////////////
   ////////////////IP CAMERA RELAY AND RESET/////////////////
