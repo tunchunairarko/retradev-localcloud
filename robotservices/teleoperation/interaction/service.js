@@ -5,12 +5,12 @@
  */
 
 const handWaveService = (socket, robot) => {
-  socket.on("SENDWAVEHAND", function (data) {
+  socket.on("SENDWAVEHAND", (data) => {
     socket.to(robot).emit("RELAYWAVEHAND", data);
   });
 };
 const handPointingService = (socket, robot) => {
-  socket.on("POINTAT", function (data) {
+  socket.on("POINTAT", (data) => {
     socket.to(robot).emit("RELAYPOINTAT", data);
   });
 };

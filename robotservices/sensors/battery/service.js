@@ -5,7 +5,7 @@
  */
 
 const batterySocket = (socket, robot) => {
-  socket.on("BATTERYDATA", function (data) {
+  socket.on("BATTERYDATA", (data) => {
     socket.to(robot).emit("TOBATTERYDATA", data);
   });
 };

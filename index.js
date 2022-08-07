@@ -51,91 +51,14 @@ app.use(helmet());
 // console.log("MongoDB connection established")
 const server = app.listen(PORT, () => console.log(`The RetraDev server has started on port: ${PORT}`));
 
-/////////////////////
-//////////////////////
-///////////////////
-
-
-
 const io = socketio(server, {
   pingTimeout: 0, origins: "*:*",
   allowEIO3: true
 })
 
-let interval;
-
 io.on("connection", (socket) => {
   console.log("New client connected");
-
-  socket.on("pythondata", function (frame) {
-
-    var buff = Buffer.from(frame).toString()
-    let base64data = buff.toString('base64');
-
-    socket.broadcast.emit("FROMPYAPI", base64data)
-
-  })
-
-
-  socket.on("frontenddata", function (data) {
-    console.log(data)
-    socket.broadcast.emit("FROMNODEAPI", data)
-  })
-
-  socket.on("frontendspeechdata", function (data) {
-    console.log(data)
-    socket.broadcast.emit("FROMNODESPEECHAPI", data)
-  })
-  socket.on("remoterobotdata", function (data) {
-    console.log(data)
-
-    socket.broadcast.emit("FROMREMOTEROBOT", data)
-
-  })
-  socket.on("BATTERYDATA", function (data) {
-    console.log(data)
-    socket.broadcast.emit("TOBATTERYDATA", data)
-  })
-
-  socket.on("FACETRACKDATA", function (data) {
-    // console.log(data)
-    if (data === 0) {
-      socket.broadcast.emit("TOFACETRACKDATA", false)
-    }
-    else {
-      if (data === 0) {
-        socket.broadcast.emit("TOFACETRACKDATA", true)
-      }
-    }
-  })
-  socket.on("SONARDATA", function (data) {
-    // console.log(data)
-    socket.broadcast.emit("TOSONARDATA", data)
-  })
-
-  socket.on("SENDFACETRACKSTATUS", function (data) {
-    console.log(data)
-    socket.broadcast.emit("RELAYFACETRACKSTATUS", data)
-  })
-
-  socket.on("PEPPERCONTEST", function (data) {
-    console.log(data)
-  })
-  
-  socket.on("POINTAT",function(data){
-    socket.broadcast.emit("RELAYPOINTAT",data)
-  })
-  ///////////////////////////////////////////////////////////
-  ////////////////IP CAMERA RELAY AND RESET/////////////////
-  socket.on("STARTIPCAM",function(data){
-    socket.broadcast.emit("RELAYSTARTIPCAM",data)
-  })
-  socket.on("RESETIPCAM",function(data){
-    socket.broadcast.emit("RELAYRESETIPCAM",data)
-  })
-  socket.on("RELAYIPCAMURL",function(data){
-    socket.broadcast.emit("IPCAMURL",data)
-  })
+  //  
 
 });
 

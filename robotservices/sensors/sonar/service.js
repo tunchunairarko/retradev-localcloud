@@ -5,7 +5,7 @@
  */
 
 const sonarSocket = (socket, robot) => {
-  socket.on("SONARDATA", function (data) {
+  socket.on("SONARDATA", (data) => {
     socket.to(robot).emit("TOSONARDATA", data);
   });
 };
