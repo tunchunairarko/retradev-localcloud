@@ -14,7 +14,7 @@ const handPointingService = (socket, robot) => {
     socket.to(robot).emit("RELAYPOINTAT", data);
   });
 };
-export const teleoperationService = (socket, robot) => {
+export const interactionService = (socket, robot) => {
   handWaveService(socket, robot);
   handPointingService(socket, robot);
 };
